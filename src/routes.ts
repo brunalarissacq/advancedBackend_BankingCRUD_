@@ -13,8 +13,13 @@ routes.post(`${pathCheckingAccounts}/create`, checkingAccountController.create);
 routes.put(`${pathCheckingAccounts}/update/:id`, checkingAccountController.verifyExists, checkingAccountController.update);
 routes.delete(`${pathCheckingAccounts}/delete/:id`, checkingAccountController.verifyExists, checkingAccountController.delete);
 
-routes.post(`${pathCheckingAccounts}/:id/deposit`, checkingAccountController.verifyExists, statementController.verifyAmount, statementController.deposit);
+routes.post(`${pathCheckingAccounts}/:id/deposit`, checkingAccountController.verifyExists, statementController.deposit);
 routes.get(`${pathCheckingAccounts}/:id/statements`, checkingAccountController.verifyExists, statementController.getStatement);
-routes.post(`${pathCheckingAccounts}/:id/withdraw`, checkingAccountController.verifyExists, statementController.verifyAmount, statementController.withdraw);
+routes.post(`${pathCheckingAccounts}/:id/withdraw`, checkingAccountController.verifyExists, statementController.withdraw);
+routes.get(`${pathCheckingAccounts}/:id/balance`, checkingAccountController.verifyExists, statementController.getBalance);
+routes.get(`${pathCheckingAccounts}/:id/statementsPeriod`, checkingAccountController.verifyExists, statementController.getStatementByPeriod);
+routes.get(`${pathCheckingAccounts}/:id/statement`, statementController.getStatementById);
+routes.post(`${pathCheckingAccounts}/:id/pix`, checkingAccountController.verifyExists, statementController.sendPix);
+routes.post(`${pathCheckingAccounts}/:id/ted`, checkingAccountController.verifyExists, statementController.sendTed);
 
 export { routes }

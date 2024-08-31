@@ -30,4 +30,5 @@ model Statement {
   description       String
   checkingAccount   CheckingAccount @relation(fields: [idCheckingAccount], references: [id])
   idCheckingAccount String          @db.ObjectId
+  createdAt         DateTime        @default(now())
 }
